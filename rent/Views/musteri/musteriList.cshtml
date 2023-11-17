@@ -1,0 +1,36 @@
+﻿@model List<Musteri>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3> Müşteriler</h3>
+<a class="btn btn-primary" asp-controller="musteri" asp-action="musteriEkle" style="float:inline-start " >Müşteri Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th >T.C. Kimlik Numarası</th>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Telefon Numarası</th>
+            <th>E-posta</th>
+            
+        </tr>
+    <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+            <tr>
+                <th> @(i + 1) </th>
+                <td>@Model[i].TcKimlik </td>
+                <td>@Model[i].Ad </td>
+                <td>@Model[i].Soyad </td>
+                <td>@Model[i].Telefon </td>
+                <td>@Model[i].Eposta </td>
+                
+                <td>
+                    <a class="big-icon" asp-controller="musteri" asp-action="musteriSil" asp-route-id="@Model[i].MusteriId"><i class="bi bi-x-lg"></i></a> Sil
+                    <a class="big-icon margin-icon" asp-controller="musteri" asp-action="musteriDuzenle" asp-route-id="@Model[i].MusteriId"><i class="bi bi-cloud-arrow-up"></i></a> Düzenle
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>

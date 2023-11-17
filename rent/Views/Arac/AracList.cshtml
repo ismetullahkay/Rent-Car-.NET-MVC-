@@ -1,0 +1,43 @@
+﻿@model List<Arac>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3> Araçlar</h3>
+
+<a class="btn btn-primary" asp-controller="Arac" asp-action="AracEkle" style="float:right">Araç Ekle</a>
+
+<table class="table table-striped">   
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Çıkış Yılı</th>
+            <th>Plakası</th>
+            <th>Motor gücü</th>
+            <th>Renk</th>
+            <th>Günlük Kiralama Ücreti(₺)</th>
+            <th>İşlem</th>
+        </tr>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th>@(i+1) </th>
+                <td>@Model[i].Marka </td>
+                <td>@Model[i].Model </td>
+                <td>@Model[i].Yil </td>
+                <td>@Model[i].Plaka</td>
+                <td>@Model[i].MotorGucu </td>
+                <td>@Model[i].Renk </td>
+                <td>@Model[i].GunlukKiraUcret </td>
+                <td>
+                    <a class="big-icon" asp-controller="Arac" asp-action="AracSil" asp-route-id="@Model[i].AracId">
+                        <i class="bi bi-x-lg"></i></a> Sil
+                    <a class="big-icon margin-icon" asp-controller="Arac" asp-action="AracDuzenle" asp-route-id="@Model[i].AracId">
+                        <i class="bi bi-cloud-arrow-up"></i></a> Düzenle
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

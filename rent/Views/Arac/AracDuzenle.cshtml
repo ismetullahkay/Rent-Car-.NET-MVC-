@@ -1,0 +1,40 @@
+﻿@model Arac
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="text-center">Araç Düzenleme Sayfası</h3>
+
+<form method="post" asp-controller="Arac" asp-action="AracDuzenle">
+    <input type="hidden" asp-for="AracId" />
+    <div class="mb-3">
+        <label class="form-label" asp-for="Marka">Aracın Markası</label>
+        <input type="text" class="form-control" asp-for="Marka" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Model">Aracın Modeli</label>
+        <input type="text" class="form-control" asp-for="Model" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Yil">Aracın üretim yılı</label>
+        <input type="text" class="form-control" asp-for="Yil" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Plaka">Aracın Plakası</label>
+        <input type="text" class="form-control" asp-for="Plaka" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="MotorGucu">Aracın motor gücü</label>
+        <input type="text" class="form-control" asp-for="MotorGucu" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Renk">Aracın rengi</label>
+        <input type="text" class="form-control" asp-for="Renk" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="GunlukKiraUcret">Aracın Günlük Kiralama Ücreti</label>
+        <input type="text" class="form-control" asp-for="GunlukKiraUcret" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+</form>

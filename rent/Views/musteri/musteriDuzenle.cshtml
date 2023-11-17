@@ -1,0 +1,31 @@
+﻿@model Musteri
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="text-center">Müşteri Bilgileri Güncelle</h3>
+
+<form method="post" asp-controller="musteri" asp-action="musteriDuzenle">
+    <input type="hidden" asp-for="MusteriId"/>
+    <div class="mb-3">
+        <label class="form-label" asp-for="TcKimlik">T.C. Kimlik Numarası</label>
+        <input type="text" class="form-control" asp-for="TcKimlik" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Ad">Adı</label>
+        <input type="text" class="form-control" asp-for="Ad" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Soyad">Soyadı</label>
+        <input type="text" class="form-control" asp-for="Soyad" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Telefon">Telefon Numarası</label>
+        <input type="text" class="form-control" asp-for="Telefon" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Eposta">E-posta adresi</label>
+        <input type="text" class="form-control" asp-for="Eposta" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

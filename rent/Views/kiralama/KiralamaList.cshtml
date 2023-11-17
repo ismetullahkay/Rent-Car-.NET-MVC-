@@ -1,0 +1,50 @@
+﻿@model List<KiralamaBilgi>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 > Kiralama Bilgileri</h3>
+<a class="btn btn-primary" asp-controller="Kiralama" asp-action="KiralamaEkle" style="float:right">Kiralama Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Araç Bilgisi</th>
+            <th>Müşteri</th>
+            <th>Kiralanan Gün</th>
+            <th>Teslim Tarihi</th>
+            <th>Kiralama(gün) </th>
+            <th>Toplam Ücret (₺)</th>
+            <th>İşlemler</th>
+        </tr>
+    <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+            <tr>
+                <th>@(i + 1)</th>
+                <td>@(Model[i].Arac.Marka + " " + Model[i].Arac.Model + " " +Model[i].Arac.Yil + " " + Model[i].Arac.Plaka)</td>
+                <td>@(Model[i].Musteri.Ad +" " + Model[i].Musteri.Soyad)</td>
+                <td style="background-color:lightgreen">@Model[i].KiraGunu</td>
+                <td style="background-color:orangered">@Model[i].TeslimGunu</td>
+                <td>@Model[i].KiralamaGun</td>               
+                <td style="background-color:darkgrey">@Model[i].ToplamUcret</td>
+                <td>
+                    <a class="big-icon" asp-controller="kiralama" asp-action="kiralamaSil" asp-route-id="@Model[i].KiralamaBilgiId">
+                        <i class="bi bi-x-lg"></i>
+                    </a> iptal et <br>  
+                </td>
+                <td>
+                    <a class="big-icon" asp-controller="kiralama" asp-action="ArizaEkle" asp-route-id="@Model[i].KiralamaBilgiId">
+                        <i class="bi bi-wrench-adjustable"></i>
+                    </a> hasar cezası ekle
+                </td>
+            </tr>
+
+            }
+    </tbody>
+</table>
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        alert('@TempData["AlertMessage"]');
+    </script>
+}
